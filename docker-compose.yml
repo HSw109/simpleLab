@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  web:
+    build: ./web
+    ports:
+      - "8080:8080"
+    networks:
+      - my-network
+
+  db:
+    build: ./db
+    ports:
+      - "1521:1521"
+    environment:
+      - ORACLE_PASSWORD=trgg1234
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    driver: bridge
